@@ -1,0 +1,14 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.table tr.active td {  
+  background-color:#50524f !important;  
+  color: white;  
+}
+
+.sortable tr {
+  cursor: pointer;
+}

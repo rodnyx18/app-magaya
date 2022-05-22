@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="row">      
+      <div class="col-md-3">
+        <h4>New Order</h4>
+        <br/>
+        Payment type: <app-payment-type></app-payment-type>        
+        <br/><br/>
+        <button class="btn btn-success" 
+          (click)="createOrder()"
+          [disabled]="order.totalValue == 0">
+          Create Order
+        </button>             
+      </div>
+      <div class="col-md-8 new-order">
+        <div class="row" *ngFor="let productOrder of order.productOrders; let i = index">
+          <div class="col-md-2">
+            {{ productOrder.productId }}     
+          </div>
+          <div class="col-md-6">
+            {{ productOrder.description }}     
+          </div>  
+          <div class="col-md-2">
+            {{ productOrder.price | currency }}     
+          </div>     
+        </div>  
+        <div class="row">
+          <div class="col-md-2">  
+          </div>
+          <div class="col-md-6">                
+          </div>  
+          <div class="col-md-2">
+            <label><strong>{{ order.totalValue | currency }}</strong></label> 
+          </div>     
+        </div>          
+      </div>
+      <br/>
+    </div>
+
+    <div><br/></div>
+    <div><br/></div>
+    <div><br/></div>
+
+    <div class="row">
+      <h4>Search Products</h4>
+      <div class="row">
+        <div class="col-md-8">
+          <form (ngSubmit)="searchProducts()" autocomplete="off">
+            <input type="text"
+                   name="termino"
+                   class="form-control"
+                   [(ngModel)]="searchProductText"
+                   placeholder="Type and press Enter"/>
+          </form>
+          <div *ngIf="products.length > 0">
+            {{ products.length }} found
+          </div>   
+        </div> 
+        <div class="col-md-4">
+          <button class="btn btn-primary" 
+          (click)="searchProducts()"
+          [disabled]="!searchProductText" >
+            <i class="bi bi-search"></i>
+          </button>
+        </div> 
+      </div>      
+      <br/><br/><br/>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-6" 
+        *ngFor="let product of products; let i = index">
+        <div class="card card-hover" (click)="addProductOrder(product)">
+          <div class="card-body">
+            <div>
+              {{ product.id }}
+              <h3>{{ product.description }}</h3> 
+            </div>              
+            <div class="card-text">               
+              Price: <h5>{{ product.price | currency }}</h5>  
+              Weight: <h6>{{ product.weight }}</h6>            
+            </div>
+          </div> 
+        </div>
+      </div>
+      <br/>
+    </div>          
+  </div>
+
+  <div class="col-md-4">
+    <app-customers-details #customerDetail></app-customers-details>
+    <br>
+    <h4>Orders history</h4>
+    <div class="row" *ngFor="let order of customerDetail.customer.orders; let i = index">
+      <div class="col-md-1">{{ i+1 }}</div>
+      <div class="col-md-5">{{ order.number }}</div>
+      <div class="col-md-5">{{ order.date | date:'short' }}</div>
+    </div>
+  </div>
+</div>
+
+
+
+

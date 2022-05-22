@@ -1,0 +1,41 @@
+<div class="list row">
+  <div class="col-md-12">
+    <h4>Customers</h4>
+    <table class="table table-hover table-striped sortable" *ngIf="customers">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; let i = index" 
+        (click)="setActiveCustomer(customer, i)" 
+        [class.active]="i == currentIndex">
+            <td> 
+              <a routerLink="/order/{{ currentCustomer.id }}">
+                <i class="bi bi-cash-coin"></i>
+              </a>
+            </td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phone}}</td>            
+            <td>
+              <a routerLink="/customers/{{ currentCustomer.id }}">
+                <i class="bi bi-pencil"></i>
+              </a>
+            </td>
+            <td>
+                <i class="bi bi-trash black-icon"></i>
+            </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

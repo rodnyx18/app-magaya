@@ -1,0 +1,29 @@
+<div class="row">  
+  <div class="col-md-12">
+    <h4>Customer</h4>
+    <div *ngIf="customer.id">     
+      <div>
+        <label><strong>Name:</strong></label> {{ customer.name }}
+      </div>
+      <div>
+        <label><strong>Email:</strong></label> {{ customer.email }}
+      </div>
+      <div>
+        <label><strong>Phone:</strong></label> {{ customer.phone }}
+      </div>
+      <div *ngIf="customer.address">
+        <div><label><strong>Address:</strong></label> 
+          {{ customer.address.number }} 
+          {{ customer.address.street }}, 
+          {{ customer.address.city }}, 
+          {{ customer.address.zipCode }}, 
+          {{ customer.address.country }}
+        </div>
+      </div>
+      <div *ngIf="customer.orders">
+        <label><strong>Orders:</strong></label> {{ ordersNumber }}
+      </div>             
+    </div>
+</div>
+
+

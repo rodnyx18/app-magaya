@@ -1,0 +1,13 @@
+<select 
+  class="form-control" 
+  id="selectType"
+  name="selectType"
+  [(ngModel)]="selectedType"
+>
+  <option 
+    *ngFor="let p of paymentTypes" 
+    [ngValue]="p"
+  >
+    {{ p.type }}
+  </option>
+ </select>

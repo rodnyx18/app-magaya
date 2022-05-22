@@ -1,0 +1,25 @@
+<div class="list row">
+  <div class="col-md-12">
+    <h4>Orders</h4>
+    <table class="table table-hover table-striped sortable" >
+      <thead>
+        <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Date</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i = index" 
+        (click)="setActiveOrder(order, i)" 
+        [class.active]="i == currentIndex">
+            <td>{{ order.number }}</td>
+            <td>{{order.date | date:'mediumDate'}}</td>
+            <td>
+              <i class="bi bi-trash black-icon" (click)="deleteOrder(order.id)"></i>
+            </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
