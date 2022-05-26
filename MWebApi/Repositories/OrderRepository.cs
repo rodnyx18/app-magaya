@@ -22,11 +22,13 @@ namespace MWebApi.Repositories
             order.Number = Guid.NewGuid().ToString();
             order.Date = DateTime.Now;
             order.ProductOrders = new List<ProductOrder>();
+
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
             productsOrder.ForEach(p => p.OrderId = order.Id);
             _context.ProductOrders.AddRange(productsOrder);
+
             order.Number = (order.Id + 1000).ToString();
             await _context.SaveChangesAsync();
 
@@ -53,17 +55,20 @@ namespace MWebApi.Repositories
 
         public async Task<Order?> Get(int id)
         {
-            var order = await _context
+            return await _context
                 .Orders
                 .Include(o => o.Payment)
-                .FirstAsync(o => o.Id == id);                                  
-
-            return order;
+                .FirstOrDefaultAsync(o => o.Id == id);          
         }
 
         public async Task<List<Order>> GetAll()
         {
-            return await _context.Orders.ToListAsync();
+            var orders = await _context
+                .Orders
+                .Include(o => o.Payment)
+                .ToListAsync();
+
+            return orders;
         }
 
         public async Task Update(int id, Order order)

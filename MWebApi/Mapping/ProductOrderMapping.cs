@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -16,7 +16,7 @@ namespace MWebApi.Mapping
             };
         }
 
-        public static ProductOrder ToProductOrder(this ProductOrderRequete requete)
+        public static ProductOrder ToProductOrder(this ProductOrderRequest requete)
         {
             return new ProductOrder(requete.ProductId, requete.OrderId, requete.Quantity);
         }

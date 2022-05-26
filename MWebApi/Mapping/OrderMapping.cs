@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -15,12 +15,14 @@ namespace MWebApi.Mapping
                 Date = entity.Date,
                 CustomerId = entity.CustomerId,
                 PaymentId = entity.PaymentId,
-                TotalValue = entity.TotalValue,                
+                TotalValue = entity.TotalValue,
+                //Customer = entity.Customer?.ToCustomerReponse(),
+                Payment = entity.Payment?.ToPaymentTypeReponse(),
                 ProductOrders = entity.ProductOrders?.Select(po => po.ToProductOrderReponse()).ToList()
             };
         }
 
-        public static Order ToOrder(this OrderRequete requete)
+        public static Order ToOrder(this OrderRequest requete)
         {
             return new Order()
             {

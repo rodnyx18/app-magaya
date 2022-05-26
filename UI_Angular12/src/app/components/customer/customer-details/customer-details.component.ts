@@ -37,7 +37,6 @@ export class CustomersDetailsComponent implements OnInit {
         data => {
           this.customer = data;
           this.ordersNumber = this.customer.orders.length;
-          console.log(data);
         },
         error => {
           console.log(error);

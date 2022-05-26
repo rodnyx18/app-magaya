@@ -54,7 +54,6 @@ export class OrderComponent implements OnInit {
     if (!this.searchProductText) {
       return;
     }
-
     this.productService.searchProducts(this.searchProductText)
       .subscribe(
         data => {
@@ -103,6 +102,22 @@ export class OrderComponent implements OnInit {
       this.order.productOrders.push(newProductOrder);
     }
     this.calculateOrderTotal();
+  }
+
+  addQuantity(productOrder: ProductOrder): void {
+    productOrder.quantity++;
+    this.calculateOrderTotal();
+  }
+
+  removeQuantity(productOrder: ProductOrder): void {
+    if (productOrder.quantity > 1) {
+      productOrder.quantity--;
+      this.calculateOrderTotal();
+    }      
+  }
+
+  hasProductOrder(): boolean {
+    return this.order.productOrders.length > 0;
   }
 
   calculateOrderTotal(): void {

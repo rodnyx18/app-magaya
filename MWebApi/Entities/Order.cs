@@ -20,9 +20,9 @@ namespace MWebApi.Entities
         [NotMapped]
         public decimal TotalValue { get; set; }
 
-        public virtual Customer? Customer { get; set; } = null!;
-        public virtual Payment? Payment { get; set; } = null!;
-        public virtual ICollection<ProductOrder>? ProductOrders { get; set; }
+        public Customer? Customer { get; set; } = null!;
+        public Payment? Payment { get; set; } = null!;
+        public ICollection<ProductOrder>? ProductOrders { get; set; }
 
         public void CalculateTotalValue()
         {
@@ -35,7 +35,7 @@ namespace MWebApi.Entities
 
             foreach (var item in ProductOrders)
             {
-                totalValue += item.Product.Price * item.Quantity;
+                totalValue += item.Product!.Price * item.Quantity;
             }
 
             TotalValue = totalValue;

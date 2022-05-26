@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -16,11 +16,11 @@ namespace MWebApi.Mapping
                 Phone = entity.Phone,
                 Address = entity.Address?.ToAddressReponse(),
                 AddressId = entity.AddressId,
-                Orders = entity.Orders.Select(o => o.ToOrderReponse()).ToList()
+                Orders = entity.Orders?.Select(o => o.ToOrderReponse()).ToList()
             };
         }
 
-        public static Customer ToCustomer(this CustomerRequete requete)
+        public static Customer ToCustomer(this CustomerRequest requete)
         {
             return new Customer()
             {

@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -20,7 +20,7 @@ namespace MWebApi.Mapping
             };
         }
 
-        public static Address ToAddress(this AddressRequete requete)
+        public static Address ToAddress(this AddressRequest requete)
         {
             return new Address()
             {

@@ -12,6 +12,7 @@ export class CustomersAddComponent implements OnInit {
 
   customer: {};
   submitted = false;
+  message: string;
 
   constructor(private customerService: CustomerService) { }
 
@@ -22,14 +23,14 @@ export class CustomersAddComponent implements OnInit {
   saveCustomer(): void {
     this.customerService.create(this.customer)
       .subscribe(
-        response => {
-          console.log("response");
-          console.log(response);
+        _ => {
           this.submitted = true;
+          this.message = '';
         },
         error => {
-          console.log("error");
-          console.log(error);
+          if (error.error.functional) {
+            this.message = error.error.errorMessage;
+          }
         });
   }
 

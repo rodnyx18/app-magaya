@@ -30,9 +30,11 @@ namespace MWebApi.Contexts
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("appsettings.json")
                 .Build();
-            
+
             if (!optionsBuilder.IsConfigured)
+            {
                 optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            }           
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -143,6 +145,12 @@ namespace MWebApi.Contexts
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                //entity.HasOne(d => d.Order)
+                //    .WithMany(p => p.ProductOrders)
+                //    .HasForeignKey(d => d.OrderId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_ProductOrder_OrderID");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductOrders)

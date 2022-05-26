@@ -15,6 +15,6 @@ namespace MWebApi.Entities
         public decimal Price { get; set; }
         public double Weight { get; set; }
 
-        public virtual ICollection<ProductOrder>? ProductOrders { get; set; }
+        public ICollection<ProductOrder>? ProductOrders { get; set; }
     }
 }

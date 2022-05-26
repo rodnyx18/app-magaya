@@ -6,6 +6,7 @@
         <tr>
           <th scope="col">Number</th>
           <th scope="col">Date</th>
+          <th scope="col">Payment type</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -15,6 +16,7 @@
         [class.active]="i == currentIndex">
             <td>{{ order.number }}</td>
             <td>{{order.date | date:'mediumDate'}}</td>
+            <td>{{ order.payment.type }}</td>
             <td>
               <i class="bi bi-trash black-icon" (click)="deleteOrder(order.id)"></i>
             </td> 

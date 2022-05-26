@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -17,7 +17,7 @@ namespace MWebApi.Mapping
             };
         }
 
-        public static Product ToProduct(this ProductRequete requete)
+        public static Product ToProduct(this ProductRequest requete)
         {
             return new Product()
             {

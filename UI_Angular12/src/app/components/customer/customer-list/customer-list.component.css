@@ -11,3 +11,22 @@
 .black-icon {
   color: rgb(95, 93, 93);  
 }
+
+.error-message {
+  border: 1px solid #0e0d0d;
+  background-color: #f50404;
+  border-radius: 5px;
+  color: rgb(247, 251, 247);
+}
+
+.information-message {
+  border: 1px solid #0e0d0d;
+  background-color: #118844;
+  border-radius: 5px;
+  color: rgb(247, 251, 247);
+}
+
+.margin-left-10 {
+  margin-top: 5px;
+  margin-left: 10px;
+}

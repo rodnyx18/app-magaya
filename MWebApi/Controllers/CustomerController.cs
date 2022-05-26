@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MWebApi.Dto.Requete;
-using MWebApi.Dto.Reponse;
+using MWebApi.Dtos.Request;
+using MWebApi.Dtos.Reponse;
 using MWebApi.Mapping;
 using MWebApi.Repositories;
 
@@ -46,7 +46,7 @@ namespace MWebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(int id, CustomerRequete requete)
+        public async Task<IActionResult> PutCustomer(int id, CustomerRequest requete)
         {
             if (id != requete.Id)
             {
@@ -59,7 +59,7 @@ namespace MWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerReponse>> PostCustomer(CustomerRequete requete)
+        public async Task<ActionResult<CustomerReponse>> PostCustomer(CustomerRequest requete)
         {
             var customer = await _repository.Add(requete.ToCustomer());
 

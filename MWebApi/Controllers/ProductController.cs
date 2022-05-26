@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MWebApi.Dto.Requete;
-using MWebApi.Dto.Reponse;
+using MWebApi.Dtos.Request;
+using MWebApi.Dtos.Reponse;
 using MWebApi.Mapping;
 using MWebApi.Repositories;
 
@@ -54,7 +54,7 @@ namespace MWebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, ProductRequete productRequete)
+        public async Task<IActionResult> PutProduct(int id, ProductRequest productRequete)
         {
             if (id != productRequete.Id)
             {
@@ -67,7 +67,7 @@ namespace MWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductReponse>> PostProduct(ProductRequete productRequete)
+        public async Task<ActionResult<ProductReponse>> PostProduct(ProductRequest productRequete)
         {
             var product = await _repository.Add(productRequete.ToProduct());
 

@@ -12,7 +12,8 @@ export class CustomersListComponent implements OnInit {
   customers?: Customer[];
   currentCustomer: Customer = {};
   currentIndex = -1;
-  title = '';
+  message = '';
+  messageClass = 'error-message'
 
   constructor(private customerService: CustomerService) { }
 
@@ -25,10 +26,11 @@ export class CustomersListComponent implements OnInit {
       .subscribe(
         data => {
           this.customers = data;
-          console.log(data);
         },
         error => {
-          console.log(error);
+          if (error.error.functional) {
+            this.showErrorMessage(error.error.errorMessage);
+          }
         });
   }
 
@@ -43,4 +45,29 @@ export class CustomersListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  deleteCustomer(customerId: number): void {
+    this.message = '';
+    this.customerService.delete(customerId)
+      .subscribe(
+        _ => {
+          this.getCustomers();
+          this.showInformationMessage('The customer has been successfully removed.');
+          //this.currentCustomer = {};
+        },
+        error => {
+          if (error.error.functional) {
+            this.showErrorMessage(error.error.errorMessage);
+          }
+        });
+  }
+
+  showInformationMessage(message: string): void {
+    this.message = message;
+    this.messageClass = 'information-message';
+  }
+
+  showErrorMessage(message: string): void {
+    this.message = message;
+    this.messageClass = 'error-message';
+  }
 }

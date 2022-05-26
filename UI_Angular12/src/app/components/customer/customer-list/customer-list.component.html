@@ -1,6 +1,18 @@
 <div class="list row">
   <div class="col-md-12">
-    <h4>Customers</h4>
+    
+    <div class="row">
+      <div class="col-md-2">
+        <h4>Customers</h4>
+      </div>
+      <div class="col-md-1">        
+      </div>
+      <div class="col-md-9" *ngIf="message" >
+        <div [class]="messageClass">
+          <h6 class="margin-left-10"> {{ message }} </h6>  
+        </div>     
+      </div>
+    </div>  
     <table class="table table-hover table-striped sortable" *ngIf="customers">
       <thead>
         <tr>
@@ -25,12 +37,12 @@
             <td>{{customer.email}}</td>
             <td>{{customer.phone}}</td>            
             <td>
-              <a routerLink="/customers/{{ currentCustomer.id }}">
+              <a routerLink="/customers/{{ customer.id }}">
                 <i class="bi bi-pencil"></i>
               </a>
             </td>
             <td>
-                <i class="bi bi-trash black-icon"></i>
+                <i class="bi bi-trash black-icon" (click)="deleteCustomer(customer.id)"></i>
             </td> 
         </tr>
       </tbody>

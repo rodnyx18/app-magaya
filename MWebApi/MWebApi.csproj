@@ -20,7 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <InternalsVisibleTo Include="MWebApi.Tests" />
+    <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests" />
   </ItemGroup>
 
 </Project>

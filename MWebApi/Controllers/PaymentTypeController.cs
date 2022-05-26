@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MWebApi.Dto.Reponse;
+using MWebApi.Dtos.Reponse;
 using MWebApi.Mapping;
 using MWebApi.Repositories;
 

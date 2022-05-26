@@ -35,6 +35,7 @@
           name="phone"
         />
       </div>
+      <br/>
 
       <div class="form-group">
         <label >Address</label>
@@ -90,7 +91,16 @@
 
       <div class="form-group">
         <br>
-        <button (click)="saveCustomer()" class="btn btn-success">Add</button>
+        <div class="row">
+          <div class="col-md-2">
+            <button (click)="saveCustomer()" class="btn btn-success">Add</button>
+          </div>
+          <div class="col-md-10 error-message" *ngIf="message" >
+            <div class="">
+              <h6>{{ message }}</h6>       
+            </div>     
+          </div>
+        </div>  
       </div>
       
     </div>
@@ -100,4 +110,5 @@
       <button class="btn btn-success" (click)="newCustomer()">New</button>
     </div>
   </div>
+  <br/>
 </div>

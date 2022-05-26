@@ -16,12 +16,7 @@ namespace MWebApi.Entities
         public string Email { get; set; } = null!;
         public int AddressId { get; set; }
 
-        public virtual Address Address { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-
-        public static explicit operator Task<object>(Customer v)
-        {
-            throw new NotImplementedException();
-        }
+        public Address? Address { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }

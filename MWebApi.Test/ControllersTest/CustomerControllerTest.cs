@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Moq;
 using MWebApi.Controllers;
-using MWebApi.Dto.Reponse;
+using MWebApi.Dtos.Reponse;
 using MWebApi.Entities;
 using MWebApi.Mapping;
 using MWebApi.Repositories;

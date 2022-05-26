@@ -12,12 +12,29 @@
           Create Order
         </button>             
       </div>
-      <div class="col-md-8 new-order">
+      <div class="col-md-8" *ngIf="hasProductOrder()">
+        <div class="row">
+          <div class="col-md-2">  
+          </div>
+          <div class="col-md-3">  
+            <label><strong>Quantity</strong></label> 
+          </div>
+          <div class="col-md-5">  
+            <label><strong>Product name</strong></label>               
+          </div>  
+          <div class="col-md-2">
+            <label><strong>Price</strong></label> 
+          </div>     
+        </div>   
         <div class="row" *ngFor="let productOrder of order.productOrders; let i = index">
           <div class="col-md-2">
-            {{ productOrder.productId }}     
+            <button (click)="removeQuantity(productOrder)">-</button>   
+            <button (click)="addQuantity(productOrder)">+</button>   
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
+            {{ productOrder.quantity }}     
+          </div> 
+          <div class="col-md-5">
             {{ productOrder.description }}     
           </div>  
           <div class="col-md-2">
@@ -27,7 +44,9 @@
         <div class="row">
           <div class="col-md-2">  
           </div>
-          <div class="col-md-6">                
+          <div class="col-md-3">  
+          </div>
+          <div class="col-md-5">                
           </div>  
           <div class="col-md-2">
             <label><strong>{{ order.totalValue | currency }}</strong></label> 

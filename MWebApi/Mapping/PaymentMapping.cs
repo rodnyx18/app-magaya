@@ -1,6 +1,6 @@
 ﻿using MWebApi.Entities;
-using MWebApi.Dto.Reponse;
-using MWebApi.Dto.Requete;
+using MWebApi.Dtos.Reponse;
+using MWebApi.Dtos.Request;
 
 namespace MWebApi.Mapping
 {
@@ -15,7 +15,7 @@ namespace MWebApi.Mapping
             };
         }
 
-        public static Payment ToPaymentTypeReponse(this PaymentTypeRequete requete)
+        public static Payment ToPaymentTypeReponse(this PaymentTypeRequest requete)
         {
             return new Payment()
             {

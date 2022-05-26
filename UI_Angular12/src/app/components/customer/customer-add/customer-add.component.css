@@ -6,3 +6,8 @@
 .address-input {
   margin-bottom: 5px;
 }
+
+.error-message {
+  border: 1px solid #f50404;
+  border-radius: 5px;
+}
